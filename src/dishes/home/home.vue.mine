@@ -1,0 +1,85 @@
+<template>
+	<div class="home">
+		<div>
+			<van-tabbar v-model="active" :fixed="false">
+			  <van-tabbar-item >一</van-tabbar-item>
+			  <van-tabbar-item >二</van-tabbar-item>
+			  <van-tabbar-item >三</van-tabbar-item>
+			  <van-tabbar-item >四</van-tabbar-item>
+			  <van-tabbar-item >五</van-tabbar-item>
+			  <van-tabbar-item >六</van-tabbar-item>
+			</van-tabbar>
+			<div class="order">
+				<van-panel title="午餐" desc="10人" status="我已点餐"></van-panel>
+				<van-panel title="晚餐" desc="10人" status="我已点餐"></van-panel>
+			</div>
+			<div class="rankContainer" style="margin-top:0.2rem">
+				<div style="margin-left:0.1rem">菜式排名</div>
+				<van-row 
+					v-for="(item,index) in menuList"
+					type="flex" 
+					justify="center" 
+					style="display: flex; align-items: center; justify-content: center;"
+				>
+				  <van-col span="6" style="height:0.5rem; line-height:0.5rem; text-align: center;">
+				  	<span style="font-size:0.12rem">{{item.eat}}</span> 
+				  	<van-tag>素</van-tag>
+				  </van-col>
+				  <van-col span="12" style="text-align: center;">
+				  	<van-progress
+					  color="#f44"
+					  :percentage="item.pro"
+					/>
+				  </van-col>
+				  <van-col span="6" style="text-align: center;">
+				  	{{item.num}}人喜欢
+				  </van-col>
+				</van-row>
+			</div>
+		</div>
+		
+	</div>
+</template>
+
+<script>
+export default{
+	data(){
+		return{
+			active: 0,
+			menuList:[
+				{
+					eat:"鱼香茄子",
+					pro:50,
+					num:8,
+				},
+				{
+					eat:"鱼香茄子",
+					pro:50,
+					num:8,
+				},
+				{
+					eat:"鱼香茄子",
+					pro:50,
+					num:8,
+				},
+			]
+		}
+	}
+}
+</script>
+
+<style scoped>
+	.order{
+		
+	}
+	.van-tag{
+		color:green;
+		background:none;
+	}
+	
+</style>
+<style>
+	.home .van-tabbar-item__text{
+		font-size:0.14rem !important;
+	}
+</style>
